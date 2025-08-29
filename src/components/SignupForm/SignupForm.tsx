@@ -1,8 +1,9 @@
 // Signup-Form.jsx
 import { useState } from "react";
 import Input from "../Input";
-import type { CreateUserProp, SignupFormProps } from "../../Interface";
-function SignupForm({onSignup}: SignupFormProps) {
+import type { CreateUserProp } from "../../Interface";
+import { useAuth } from "../../hooks";
+function SignupForm() {
   const [formData, setFormData] = useState<CreateUserProp>({
     email: "",
     password: "",
@@ -10,10 +11,12 @@ function SignupForm({onSignup}: SignupFormProps) {
     last_name: ""
   });
 
+  const { signup } = useAuth();
+
   const handleSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log(formData);
-    onSignup(formData);
+    signup(formData);
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {

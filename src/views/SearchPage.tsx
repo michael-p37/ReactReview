@@ -21,10 +21,9 @@ const SearchPage = ({favorites, onAddFavorites, onRemoveFavorites}: SearchPagePr
     return <l-trio {...props} />;
   };
 
-
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    console.log(query);
+    // console.log(query);
     if(query.length === 0) return;
     setState({ status: "pending", data: null, error: null });
     getPokemon(query)
@@ -40,11 +39,12 @@ const SearchPage = ({favorites, onAddFavorites, onRemoveFavorites}: SearchPagePr
         console.error(err)
       }
       );
-    }
-    console.log('Pokemones', pokemon, "Favorites: ",favorites);
-    const isFavorite = favorites.find((fav) => fav.pokemon_name === pokemon?.name)
-    ? true
-    : false;
+    setQuery("")
+  }
+  // console.log('Pokemones', pokemon, "Favorites: ",favorites);
+  const isFavorite = favorites.find((fav) => fav.pokemon_name === pokemon?.name)
+  ? true
+  : false;
   return (
     <div>
       <Link to="favorites">Go to Favorites</Link>

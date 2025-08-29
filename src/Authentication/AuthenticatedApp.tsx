@@ -6,9 +6,10 @@ import { createFavorite, getFavorites, removeFavorite } from "../services/Favori
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import SearchPage from "../views/SearchPage";
 import FavoritesPage from "../views/FavoritesPage";
-
-function AuthenticatedApp({onLogout}:{onLogout: () => void} ) {
+import { useAuth } from "../hooks";
+function AuthenticatedApp() {
   const [favorites, setFavorites] = useState<PokemonFavorites[]>([]);
+  const { logout } = useAuth();
   
   useEffect(() => {
     getFavorites().then((data) => setFavorites(data)); //?? data
@@ -39,7 +40,7 @@ function AuthenticatedApp({onLogout}:{onLogout: () => void} ) {
   }
   return (
   <>
-    <button onClick={onLogout}>Log Out</button>
+    <button onClick={logout}>Log Out</button>
     <BrowserRouter>
       <Routes>
         <Route path="/"

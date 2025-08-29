@@ -3,7 +3,6 @@ import styled from '@emotion/styled';
 import { useState } from 'react';
 import LoginForm from '../components/LoginForm';
 import SignupForm from '../components/SignupForm';
-import type { UnauthenticatedAppProps } from '../Interface';
 
 const CustomLink = styled.button`
   background: none;
@@ -13,7 +12,7 @@ const CustomLink = styled.button`
     
   }
 `;
-function UnauthenticatedApp({onLogin, onSignup}: UnauthenticatedAppProps) {
+function UnauthenticatedApp() {
   const [showLogin, setShowLogin] = useState<boolean>(true);
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -23,9 +22,9 @@ function UnauthenticatedApp({onLogin, onSignup}: UnauthenticatedAppProps) {
     <div>
       <h1>Welcome to Poke Collection</h1>
       {showLogin ? (
-        <LoginForm onLogin={onLogin} />
+        <LoginForm />
       ) : (
-        <SignupForm onSignup={onSignup} />
+        <SignupForm />
       )}
       <CustomLink onClick={handleClick}>
         {showLogin ? "Create Account" : "Log In"}
