@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import AuthenticatedApp from "./AutenticatedApp";
-import UnauthenticatedApp from "./UnathenticatedApp";
 import type { CreateUserProp, Credentials, User } from "./Interface";
 import { createUser, getUser, Login } from "./services";
+import AuthenticatedApp from "./Authentication/AuthenticatedApp";
+import UnauthenticatedApp from "./Authentication/UnathenticatedApp";
 
 function App() {
   const [user, setUser] = useState<User | null>(null);

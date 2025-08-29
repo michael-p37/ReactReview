@@ -1,11 +1,10 @@
 import 'ldrs/ring';
 import { useState } from "react";
-import Input from "../../components/Input";
-import { getPokemon } from "../../services";
-// import { createFavorite, removeFavorite } from "../../services/FavoritesService";
-import type { SearchPageProps, StateTypes } from "../../Interface";
-import PokemonData from "../../components/PokeData";
 import { Link } from 'react-router-dom';
+import { getPokemon } from '../services';
+import Input from '../components/Input';
+import PokemonData from '../components/PokeData';
+import type { SearchPageProps, StateTypes } from '../Interface';
 
 const SearchPage = ({favorites, onAddFavorites, onRemoveFavorites}: SearchPageProps) => {
   const [query, setQuery] = useState<string>("");

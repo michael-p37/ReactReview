@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
-import type { PokemonFavorites } from "../../Interface";
 import { Link } from "react-router-dom";
-import { removeFavorite } from "../../services/FavoritesService";
-import { PokeImage } from "../../components/PokeData";
+import { removeFavorite } from "../services/FavoritesService";
+import type { PokemonFavorites } from "../Interface";
+import { PokeImage } from "../components/PokeData";
 
 const Wrapper = styled("div")`
   display: flex;

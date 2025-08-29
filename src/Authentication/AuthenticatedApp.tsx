@@ -3,9 +3,9 @@ import { useEffect, useState } from "react";
 import type { Pokemon, PokemonFavorites } from "../Interface";
 import { createFavorite, getFavorites, removeFavorite } from "../services/FavoritesService";
 // import FavoritesPage from "../views/FavoritesPage";
-import SearchPage from "../views/SearchPage"
-import FavoritesPage from "../views/FavoritesPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import SearchPage from "../views/SearchPage";
+import FavoritesPage from "../views/FavoritesPage";
 
 function AuthenticatedApp() {
   const [favorites, setFavorites] = useState<PokemonFavorites[]>([]);
