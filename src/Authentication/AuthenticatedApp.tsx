@@ -7,7 +7,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import SearchPage from "../views/SearchPage";
 import FavoritesPage from "../views/FavoritesPage";
 
-function AuthenticatedApp() {
+function AuthenticatedApp({onLogout}:{onLogout: () => void} ) {
   const [favorites, setFavorites] = useState<PokemonFavorites[]>([]);
   
   useEffect(() => {
@@ -38,6 +38,8 @@ function AuthenticatedApp() {
     });
   }
   return (
+  <>
+    <button onClick={onLogout}>Log Out</button>
     <BrowserRouter>
       <Routes>
         <Route path="/"
@@ -54,6 +56,7 @@ function AuthenticatedApp() {
       />
       </Routes>
     </BrowserRouter>
+  </>
   )
 }
 

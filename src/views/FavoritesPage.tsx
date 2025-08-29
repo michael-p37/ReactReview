@@ -86,16 +86,16 @@ const FavoritesPage = ({favorites}: {favorites: PokemonFavorites[]}) => {
       <h3>Favorites</h3>
       <Link to="/">Search</Link>
       <Favorites>
-      {favorites.map((fav) => (
-        <PokeCard key={fav.id} style={{borderColor: typeColors[fav.pokemon_type as keyof typColors]}}>
-        <div>
-          <PokeImage src={fav.pokemon_avatar_url} alt={fav.pokemon_name} />
-          <p>{fav.pokemon_type}</p>
-          <p>{fav.pokemon_name}</p>
-          <button onClick={() => handleDelete(fav.id)}>Delete</button>
-        </div>
-        </PokeCard>
-      ))}
+        {favorites.map((fav) => (
+          <PokeCard key={fav.id} style={{borderColor: typeColors[fav.pokemon_type as keyof typColors]}}>
+          <div>
+            <PokeImage src={fav.pokemon_avatar_url} alt={fav.pokemon_name} />
+            <p>{fav.pokemon_type}</p>
+            <p>{fav.pokemon_name}</p>
+            <button onClick={() => handleDelete(fav.id)}>Delete</button>
+          </div>
+          </PokeCard>
+        ))}
       </Favorites>
 
     </Wrapper>

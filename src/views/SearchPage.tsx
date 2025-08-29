@@ -5,6 +5,7 @@ import { getPokemon } from '../services';
 import Input from '../components/Input';
 import PokemonData from '../components/PokeData';
 import type { SearchPageProps, StateTypes } from '../Interface';
+import { trio } from 'ldrs';
 
 const SearchPage = ({favorites, onAddFavorites, onRemoveFavorites}: SearchPageProps) => {
   const [query, setQuery] = useState<string>("");
@@ -14,6 +15,12 @@ const SearchPage = ({favorites, onAddFavorites, onRemoveFavorites}: SearchPagePr
     error: null,
   });
   const { status, data: pokemon, error} = state;
+
+  trio.register()
+  const LTrio = (props: React.HTMLAttributes<HTMLElement>) => {
+    return <l-trio {...props} />;
+  };
+
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -33,9 +40,9 @@ const SearchPage = ({favorites, onAddFavorites, onRemoveFavorites}: SearchPagePr
         console.error(err)
       }
       );
-  }
- console.log('Pokemones', pokemon, "Favorites: ",favorites);
-  const isFavorite = favorites.find((fav) => fav.pokemon_name === pokemon?.name)
+    }
+    console.log('Pokemones', pokemon, "Favorites: ",favorites);
+    const isFavorite = favorites.find((fav) => fav.pokemon_name === pokemon?.name)
     ? true
     : false;
   return (
@@ -51,12 +58,11 @@ const SearchPage = ({favorites, onAddFavorites, onRemoveFavorites}: SearchPagePr
         <button>Search</button>
       </form>
       {status === "idle" && "Ready to search"}
-      {status === "pending" && "Loading..."}
+      {status === "pending" && <LTrio size="40" speed="1.3" color="black" />}
       {status === "success" && pokemon && 
         <PokemonData 
         dataPokemon={pokemon} 
         onAddFavorite={() => onAddFavorites(pokemon)} 
-        // onRemoveFavorite={handleRemoveFavorite}
         onRemoveFavorite={() => onRemoveFavorites(pokemon)}
         isFavorite={isFavorite}
       />}

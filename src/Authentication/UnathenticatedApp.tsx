@@ -10,7 +10,7 @@ const CustomLink = styled.button`
   border: none;
   cursor: pointer;
   &:hover {
-
+    
   }
 `;
 function UnauthenticatedApp({onLogin, onSignup}: UnauthenticatedAppProps) {

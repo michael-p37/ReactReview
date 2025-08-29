@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Input from "../Input";
 import type { Credentials, LoginFormProps } from "../../Interface";
-const LoginForm = ({onLogin}: LoginFormProps) => {
+function LoginForm({onLogin}: LoginFormProps) {
   const [formData, setFormData] = useState<Credentials>({
     email: "",
     password: "",
